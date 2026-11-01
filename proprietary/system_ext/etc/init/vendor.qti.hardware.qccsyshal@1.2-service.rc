@@ -41,9 +41,10 @@ on property:vendor.qti.qcc.oper.mode=6
     chmod 0660 /data/misc/qcc/conf/qcc.conf
 
 service qccsyshal@1.2-service /system/system_ext/bin/qccsyshal@1.2-service
-    # Broken on this platform: needs google::protobuf::Message::
-    # CopyWithSourceCheck, absent from the libprotobuf-cpp-lite here.
-    disabled
+    # halimpl.so needs google::protobuf::Message::CopyWithSourceCheck. Only the
+    # 21.7 build that ships in /system_ext/lib64 provides it; the AOSP build at
+    # /system/lib64/libprotobuf-cpp-full.so predates that symbol. halimpl.so
+    # DT_NEEDED is retargeted at libprotobuf-cpp-full-21.7.so, so this starts.
     class hal
     user system
     group misc system

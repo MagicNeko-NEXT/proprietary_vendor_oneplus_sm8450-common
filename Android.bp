@@ -20081,10 +20081,10 @@ cc_prebuilt_library_shared {
     },
     compile_multilib: "64",
     prefer: true,
-    // 2026-10-11：安装位置修正 —— 源文件取自 odm/lib64，原厂也在 /odm；
-    //   此前误声明为 system_ext_specific，使 /odm/bin/hw 的 charger-V6-service
-    //   在自身 namespace 里找不到它（logcat: library "...charger-V6-ndk_platform.so" not found）。
-    //   唯一使用者就是那个 odm 服务（已核对 Android.bp 全量引用）。
+    // 2026-10-11: install location fixed: the source comes from odm/lib64, and stock also has it in /odm;
+    //   it was wrongly declared system_ext_specific, so charger-V6-service in /odm/bin/hw
+    //   couldn't find it in its own namespace (logcat: library "...charger-V6-ndk_platform.so" not found).
+    //   That odm service is the only user (checked against all Android.bp references).
     soc_specific: true,
 }
 
@@ -23722,8 +23722,8 @@ cc_prebuilt_binary {
 
 cc_prebuilt_library_shared {
     name: "libdisplayconfig.qti",
-    // t23: 让预编译（10T 原版 / 与作者 22.1 同一份，148904 B）胜出源码编的那份（110208 B）
-    //   机制：同名 + prefer: true；源码模块在 hardware/qcom-caf/sm8450/display/services/config/src
+    // t23: makes the prebuilt (10T stock / same as the author's 22.1, 148904 B) win over the source-built one (110208 B)
+    //   Mechanism: same name + prefer: true; the source module is in hardware/qcom-caf/sm8450/display/services/config/src
     check_elf_files: false,
     owner: "oneplus",
     strip: {

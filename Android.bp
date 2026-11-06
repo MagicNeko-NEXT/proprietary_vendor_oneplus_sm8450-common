@@ -4,9 +4,9 @@
 
 soong_namespace {
     imports: [
+        "hardware/qcom-caf/sm8450-6.6",
         "device/oneplus/sm8450-common",
         "hardware/oplus",
-        "hardware/qcom-caf/sm8450",
         "hardware/qcom-caf/wlan",
         "vendor/qcom/opensource/commonsys-intf/display",
         "vendor/qcom/opensource/commonsys/display",
@@ -6222,6 +6222,8 @@ cc_prebuilt_library_shared {
     compile_multilib: "64",
     prefer: true,
     soc_specific: true,
+    // Xi 2026-11-05: same rmnet_* -> rtrmnet_* symbol rename as adpl.
+    allow_undefined_symbols: true,
 }
 
 cc_prebuilt_library_shared {
@@ -20644,6 +20646,12 @@ cc_prebuilt_binary {
     },
     prefer: true,
     soc_specific: true,
+    // Xi 2026-11-05: adpl is an older blob that references rmnetctl_init/cleanup and
+    //   rmnet_{associate,set,unset}_* . The LineageOS 24.0 librmnetctl renamed every
+    //   symbol to rtrmnet_ctl_*, so check_elf_file reports them unresolved. This is
+    //   the upstream-sanctioned escape hatch for prebuilts designed with lazy binding;
+    //   it does not disable the ELF check itself.
+    allow_undefined_symbols: true,
 }
 
 cc_prebuilt_binary {
@@ -21805,13 +21813,9 @@ cc_prebuilt_binary {
     soc_specific: true,
 }
 
-sh_binary {
-    name: "init.kernel.post_boot",
-    owner: "oneplus",
-    src: "proprietary/vendor/bin/init.kernel.post_boot.sh",
-    filename: "init.kernel.post_boot.sh",
-    soc_specific: true,
-}
+// Xi 2026-11-05: removed. device/oneplus/sm8450-common now ships
+// init.kernel.post_boot.sh from source (6.6 cape tuning) and both modules
+// installed to vendor/bin/init.kernel.post_boot.sh -> packaging conflict.
 
 sh_binary {
     name: "init.qcom.sensors",
@@ -22127,6 +22131,8 @@ cc_prebuilt_binary {
     },
     prefer: true,
     soc_specific: true,
+    // Xi 2026-11-05: same rmnet_* -> rtrmnet_* symbol rename as adpl.
+    allow_undefined_symbols: true,
 }
 
 cc_prebuilt_binary {
@@ -22544,6 +22550,8 @@ cc_prebuilt_binary {
     },
     prefer: true,
     soc_specific: true,
+    // Xi 2026-11-05: same rmnet_* -> rtrmnet_* symbol rename as adpl.
+    allow_undefined_symbols: true,
 }
 
 sh_binary {
@@ -23718,36 +23726,42 @@ cc_prebuilt_binary {
     device_specific: true,
 }
 
-cc_prebuilt_library_shared {
-    name: "libdisplayconfig.qti",
-    // t23: makes the prebuilt (10T stock / same as the author's 22.1, 148904 B) win over the source-built one (110208 B)
-    //   Mechanism: same name + prefer: true; the source module is in hardware/qcom-caf/sm8450/display/services/config/src
-    check_elf_files: false,
-    owner: "oneplus",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/lib64/libdisplayconfig.qti.so",
-            ],
-            shared_libs: [
-                "liblog",
-                "libhidlbase",
-                "libutils",
-                "vendor.display.config@2.0",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    prefer: true,
-    soc_specific: true,
-}
+// Xi 2026-11-05: prebuilt disabled for the 6.6 display stack.
+//   Kept the blob on disk (proprietary/vendor/lib64/libdisplayconfig.qti.so) but
+//   stopped registering the module: hardware/qcom-caf/sm8450-6.6/display/hal
+//   now provides libdisplayconfig.qti from source, and prefer: true does not
+//   resolve a name collision across two soong namespaces.
+// cc_prebuilt_library_shared {
+//     name: "libdisplayconfig.qti",
+//     // t23: makes the prebuilt (10T stock / same as the author's 22.1, 148904 B) win over the source-built one (110208 B)
+//     //   Mechanism: same name + prefer: true; the source module is in hardware/qcom-caf/sm8450/display/services/config/src
+//     check_elf_files: false,
+//     owner: "oneplus",
+//     strip: {
+//         none: true,
+//     },
+//     target: {
+//         android_arm64: {
+//             srcs: [
+//                 "proprietary/vendor/lib64/libdisplayconfig.qti.so",
+//             ],
+//             shared_libs: [
+//                 "liblog",
+//                 "libhidlbase",
+//                 "libutils",
+//                 "vendor.display.config@2.0",
+//                 "libc++",
+//                 "libc",
+//                 "libm",
+//                 "libdl",
+//             ],
+//         },
+//     },
+//     compile_multilib: "64",
+//     prefer: true,
+//     soc_specific: true,
+// }
+
 
 // SHIM(ovaltine): the OEM blob libsnapdragoncolor-manager is ABI-locked to the OEM
 // libtinyxml2 (smaller XMLDocument layout than the AOSP 11.0 build). Expose the OEM

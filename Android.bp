@@ -2451,7 +2451,7 @@ cc_prebuilt_library_shared {
                 "vendor.display.config@1.0",
                 "libgralloc.qti",
                 "libgralloctypes",
-                "libdisplayconfig.qti",
+                "libdisplayconfig.stock",
                 "libtrustedapploader",
                 "libhidlmemory",
                 "libc++",
@@ -2492,7 +2492,7 @@ cc_prebuilt_library_shared {
                 "vendor.qti.hardware.trustedui@1.1",
                 "vendor.qti.hardware.trustedui@1.2",
                 "vendor.qti.hardware.systemhelper@1.0",
-                "libdisplayconfig.qti",
+                "libdisplayconfig.stock",
                 "libtrustedapploader",
                 "libminkdescriptor",
                 "libhidlmemory",
@@ -6535,7 +6535,7 @@ cc_prebuilt_library_shared {
                 "liblog",
                 "libdrm",
                 "libhidlbase",
-                "libdisplayconfig.qti",
+                "libdisplayconfig.stock",
                 "libc++",
                 "libc",
                 "libm",
@@ -6940,7 +6940,7 @@ cc_prebuilt_library_shared {
                 "libbinder",
                 "libtinyxml2",
                 "libpowercore",
-                "libdisplayconfig.qti",
+                "libdisplayconfig.stock",
                 "libhidlbase",
                 "libsqlite",
                 "libc++",
@@ -7732,7 +7732,7 @@ cc_prebuilt_library_shared {
                 "libgrallocutils",
                 "libgralloctypes",
                 "libgralloc.qti",
-                "libdisplayconfig.qti",
+                "libdisplayconfig.stock",
                 "android.hardware.graphics.mapper@3.0",
                 "android.hardware.graphics.mapper@4.0",
                 "libnativewindow",
@@ -9212,7 +9212,7 @@ cc_prebuilt_library_shared {
                 "libqti-perfd-client",
                 "libperfconfig",
                 "libperfgluelayer",
-                "libdisplayconfig.qti",
+                "libdisplayconfig.stock",
                 "libperfioctl",
                 "vendor.qti.memory.pasrmanager@1.1",
                 "libc++",
@@ -10874,7 +10874,7 @@ cc_prebuilt_library_shared {
                 "libbinder",
                 "libtinyxml2",
                 "libpowercore",
-                "libdisplayconfig.qti",
+                "libdisplayconfig.stock",
                 "libhidlbase",
                 "libc++",
                 "libc",
@@ -10906,7 +10906,7 @@ cc_prebuilt_library_shared {
                 "libbinder",
                 "libtinyxml2",
                 "libpowercore",
-                "libdisplayconfig.qti",
+                "libdisplayconfig.stock",
                 "libhidlbase",
                 "libc++",
                 "libc",
@@ -11228,7 +11228,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "liblog",
                 "vendor.display.config@2.0",
-                "libdisplayconfig.qti",
+                "libdisplayconfig.stock",
                 "libc++",
                 "libc",
                 "libm",
@@ -19804,7 +19804,7 @@ cc_prebuilt_library_shared {
                 "libminkdescriptor",
                 "libcutils",
                 "libtrustedapploader",
-                "libdisplayconfig.qti",
+                "libdisplayconfig.stock",
                 "libc++",
                 "libc",
                 "libm",
@@ -22967,7 +22967,7 @@ cc_prebuilt_binary {
             ],
             shared_libs: [
                 "libminksocket_vendor",
-                "libdisplayconfig.qti",
+                "libdisplayconfig.stock",
                 "liblog",
                 "vendor.qti.hardware.systemhelper@1.0",
                 "libhidlbase",
@@ -23719,7 +23719,7 @@ cc_prebuilt_binary {
 }
 
 cc_prebuilt_library_shared {
-    name: "libdisplayconfig.qti",
+    name: "libdisplayconfig.stock",
     // t23: makes the prebuilt (10T stock / same as the author's 22.1, 148904 B) win over the source-built one (110208 B)
     //   Mechanism: same name + prefer: true; the source module is in hardware/qcom-caf/sm8450/display/services/config/src
     check_elf_files: false,
@@ -23730,7 +23730,7 @@ cc_prebuilt_library_shared {
     target: {
         android_arm64: {
             srcs: [
-                "proprietary/vendor/lib64/libdisplayconfig.qti.so",
+                "proprietary/vendor/lib64/libdisplayconfig.stock.so",
             ],
             shared_libs: [
                 "liblog",

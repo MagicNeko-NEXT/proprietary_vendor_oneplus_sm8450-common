@@ -479,7 +479,6 @@ PRODUCT_PACKAGES += \
     libfastcrc \
     libfastcvdsp_stub \
     libfastcvopt \
-    libgame_enhance \
     libgarden \
     libgarden_haltests_e2e \
     libgdtap \
@@ -490,9 +489,6 @@ PRODUCT_PACKAGES += \
     libgpudataproducer \
     libgsl \
     libhdr_backlight_adapter \
-    libhdr_tm \
-    libhdrdynamic \
-    libhdrdynamicootf \
     libidl \
     libizat_client_api \
     libizat_core \
@@ -609,9 +605,6 @@ PRODUCT_PACKAGES += \
     libqcrildataaidl \
     libqcrildatactl \
     libqcrildataqos \
-    libqdcm-algo \
-    libqdcm-json-mode-parser \
-    libqdcm-mode-parser \
     libqdi \
     libqdma_file_agent \
     libqdp \
@@ -655,7 +648,6 @@ PRODUCT_PACKAGES += \
     libscveObjectSegmentation \
     libscveObjectTracker \
     libscveObjectTracker_stub \
-    libsdm-color \
     libsdm-colormgr-algo \
     libsdm-disp-vndapis \
     libsdsprpc \
@@ -669,8 +661,6 @@ PRODUCT_PACKAGES += \
     libskewknob \
     libslimclient \
     libsmemlog \
-    libsnapdragoncolor-manager \
-    libsnapdragoncolor-qdcm \
     libsns_api \
     libsns_device_mode_stub \
     libsns_direct_channel_stub \

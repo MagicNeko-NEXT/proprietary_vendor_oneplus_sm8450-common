@@ -2680,7 +2680,8 @@ cc_prebuilt_library_shared {
                 "libhidlbase",
                 "libhardware",
                 "libutils",
-                "vendor.qti.hardware.dsp@1.0",
+                "libbinder_ndk",
+                "vendor.qti.hardware.dsp-V1-ndk",
                 "liblog",
                 "libc",
                 "libcutils",
@@ -3248,7 +3249,8 @@ cc_prebuilt_library_shared {
                 "libhidlbase",
                 "libhardware",
                 "libutils",
-                "vendor.qti.hardware.dsp@1.0",
+                "libbinder_ndk",
+                "vendor.qti.hardware.dsp-V1-ndk",
                 "liblog",
                 "libc",
                 "libcutils",
@@ -5772,7 +5774,8 @@ cc_prebuilt_library_shared {
                 "libhidlbase",
                 "libhardware",
                 "libutils",
-                "vendor.qti.hardware.dsp@1.0",
+                "libbinder_ndk",
+                "vendor.qti.hardware.dsp-V1-ndk",
                 "liblog",
                 "libc",
                 "libcutils",
@@ -9873,7 +9876,8 @@ cc_prebuilt_library_shared {
                 "libhidlbase",
                 "libhardware",
                 "libutils",
-                "vendor.qti.hardware.dsp@1.0",
+                "libbinder_ndk",
+                "vendor.qti.hardware.dsp-V1-ndk",
                 "liblog",
                 "libc",
                 "libcutils",
@@ -14129,34 +14133,6 @@ cc_prebuilt_library_shared {
             ],
             shared_libs: [
                 "vendor.qti.hardware.dpmservice@1.0_vendor",
-                "libhidlbase",
-                "liblog",
-                "libutils",
-                "libcutils",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "vendor.qti.hardware.dsp@1.0",
-    owner: "oneplus",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/lib64/vendor.qti.hardware.dsp@1.0.so",
-            ],
-            shared_libs: [
                 "libhidlbase",
                 "liblog",
                 "libutils",
@@ -20856,13 +20832,13 @@ cc_prebuilt_binary {
                 "proprietary/vendor/bin/dspservice",
             ],
             shared_libs: [
-                "libhidlbase",
                 "libhardware",
                 "libutils",
                 "libcutils",
                 "liblog",
                 "libavservices_minijail",
-                "vendor.qti.hardware.dsp@1.0",
+                "vendor.qti.hardware.dsp-V1-ndk",
+                "libbinder_ndk",
                 "libc++",
                 "libc",
                 "libm",
@@ -23799,4 +23775,39 @@ cc_prebuilt_library_shared {
         "libz",
     ],
     srcs: ["gpu-q3/turnip/vulkan.freedreno.so"],
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.qti.hardware.dsp-V1-ndk",
+    owner: "oneplus",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/vendor.qti.hardware.dsp-V1-ndk.so",
+            ],
+            shared_libs: [
+                "libbinder_ndk",
+                "android.hardware.common-V2-ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "vendor.qti.hardware.dsp-service.xml",
+    owner: "oneplus",
+    src: "proprietary/vendor/etc/vintf/manifest/vendor.qti.hardware.dsp-service.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
 }

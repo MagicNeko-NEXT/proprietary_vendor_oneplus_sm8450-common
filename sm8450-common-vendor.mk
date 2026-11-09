@@ -166,7 +166,7 @@ PRODUCT_COPY_FILES += \
     vendor/oneplus/sm8450-common/proprietary/vendor/etc/init/vendor.qti.diag.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.diag.rc \
     vendor/oneplus/sm8450-common/proprietary/vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.hardware.alarm@1.0-service.rc \
     vendor/oneplus/sm8450-common/proprietary/vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc \
-    vendor/oneplus/sm8450-common/proprietary/vendor/etc/init/vendor.qti.hardware.dsp@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.hardware.dsp@1.0-service.rc \
+    vendor/oneplus/sm8450-common/proprietary/vendor/etc/init/vendor.qti.hardware.dsp-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.hardware.dsp-service.rc \
     vendor/oneplus/sm8450-common/proprietary/vendor/etc/init/vendor.qti.hardware.iop@2.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.hardware.iop@2.0-service.rc \
     vendor/oneplus/sm8450-common/proprietary/vendor/etc/init/vendor.qti.hardware.perf-hal-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.hardware.perf-hal-service.rc \
     vendor/oneplus/sm8450-common/proprietary/vendor/etc/init/vendor.qti.hardware.qseecom@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.qti.hardware.qseecom@1.0-service.rc \
@@ -790,7 +790,8 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.data.qmi@1.0 \
     vendor.qti.hardware.dpmservice@1.0_vendor \
     vendor.qti.hardware.dpmservice@1.1_vendor \
-    vendor.qti.hardware.dsp@1.0 \
+    vendor.qti.hardware.dsp-V1-ndk \
+    vendor.qti.hardware.dsp-service.xml \
     vendor.qti.hardware.embmssl@1.0-adapter-helper \
     vendor.qti.hardware.embmssl@1.0 \
     vendor.qti.hardware.embmssl@1.1-adapter-helper \

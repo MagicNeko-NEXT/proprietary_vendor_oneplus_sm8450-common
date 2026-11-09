@@ -658,7 +658,6 @@ PRODUCT_PACKAGES += \
     libsdm-color \
     libsdm-colormgr-algo \
     libsdm-disp-vndapis \
-    libsdmextension \
     libsdsprpc \
     libsecureui_svcsock \
     libsensor_calibration \

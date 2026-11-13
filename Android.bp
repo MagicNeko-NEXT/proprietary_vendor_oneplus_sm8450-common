@@ -369,6 +369,10 @@ cc_prebuilt_library_shared {
                 "vendor.qti.hardware.display.mapper@3.0",
                 "android.hardware.graphics.mapper@3.0",
                 "android.hardware.graphics.mapper@2.0",
+                "libbinder_ndk",
+                "libvndksupport",
+                "android.hardware.graphics.allocator-V2-ndk",
+                "libmapperutils",
                 "vendor.qti.hardware.display.mapper@4.0",
                 "android.hardware.graphics.mapper@4.0",
                 "libgralloc.qti",
@@ -1309,6 +1313,10 @@ cc_prebuilt_library_shared {
                 "libnativewindow",
                 "vendor.qti.hardware.display.mapper@4.0",
                 "android.hardware.graphics.mapper@4.0",
+                "libbinder_ndk",
+                "libvndksupport",
+                "android.hardware.graphics.allocator-V2-ndk",
+                "libmapperutils",
                 "libc++",
                 "libc",
                 "libm",
@@ -1761,6 +1769,9 @@ cc_prebuilt_library_shared {
                 "libutils",
                 "libnativewindow",
                 "libvndksupport",
+                "android.hardware.graphics.allocator-V2-ndk",
+                "libmapperutils",
+                "libbinder_ndk",
                 "libgralloc.qti",
                 "libgralloctypes",
                 "vendor.qti.hardware.display.mapper@4.0",
@@ -2053,7 +2064,6 @@ cc_prebuilt_library_shared {
             }),
             shared_libs: [
                 "libcutils",
-                "libvndksupport",
                 "libc++",
                 "libc",
                 "libm",
@@ -2589,10 +2599,10 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libhardware",
                 "libutils",
-                "libhidlbase",
-                "libhidlmemory",
-                "android.hidl.memory@1.0",
-                "vendor.qti.qspmhal@1.0",
+                "vendor.qti.qspmhal-V1-ndk",
+                "libbase",
+                "libqspm-mem-utils-vendor",
+                "libbinder_ndk",
                 "libdl",
                 "libz",
                 "liblog",
@@ -7038,7 +7048,6 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "liblog",
                 "libcodec2_vndk",
-                "libqdMetaData",
                 "libqc2audio_base",
                 "libqc2audio_utils",
                 "libqc2audio_platform",
@@ -7166,7 +7175,6 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "liblog",
                 "libcodec2_vndk",
-                "libqdMetaData",
                 "libqc2audio_base",
                 "libc++",
                 "libc",
@@ -7306,45 +7314,6 @@ cc_prebuilt_library_shared {
     soc_specific: true,
 }
 
-cc_prebuilt_library_shared {
-    name: "libqc2vppfilter",
-    owner: "oneplus",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/lib64/libqc2vppfilter.so",
-            ],
-            shared_libs: [
-                "libutils",
-                "libcutils",
-                "liblog",
-                "libcodec2_vndk",
-                "libqdMetaData",
-                "libhwbinder",
-                "libhidlbase",
-                "libhidltransport",
-                "libqcodec2_base",
-                "libqcodec2_basecodec",
-                "libqcodec2_utils",
-                "libqcodec2_platform",
-                "vendor.qti.hardware.vpp@2.0",
-                "vendor.qti.hardware.capabilityconfigstore@1.0",
-                "vendor.qti.hardware.qconfig@1.0",
-                "qti.video.utils.videobufferlayout",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    prefer: true,
-    soc_specific: true,
-}
 
 cc_prebuilt_library_shared {
     name: "libqcbor",
@@ -7543,6 +7512,7 @@ cc_prebuilt_library_shared {
                 "libqcodec2_platform",
                 "libqcodec2_basecodec",
                 "qti.video.utils.videobufferlayout",
+                "android.hardware.graphics.common-V7-ndk",
                 "libc++",
                 "libc",
                 "libm",
@@ -7735,7 +7705,11 @@ cc_prebuilt_library_shared {
                 "libgrallocutils",
                 "libgralloctypes",
                 "libgralloc.qti",
-                "libdisplayconfig.stock",
+                "libvndksupport",
+                "libmapperutils",
+                "android.hardware.graphics.allocator-V2-ndk",
+                "libbinder_ndk",
+                "vendor.qti.hardware.display.config-V5-ndk",
                 "android.hardware.graphics.mapper@3.0",
                 "android.hardware.graphics.mapper@4.0",
                 "libnativewindow",
@@ -16814,25 +16788,130 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "vendor.qti.qspmhal@1.0-impl",
-    owner: "oneplus",
+    name: "vendor.qti.qspmhal-V1-ndk",
+    owner: "sony",
     strip: {
         none: true,
     },
     target: {
         android_arm64: {
             srcs: [
-                "proprietary/vendor/lib64/vendor.qti.qspmhal@1.0-impl.so",
+                "proprietary/vendor/lib64/vendor.qti.qspmhal-V1-ndk.so",
+            ],
+            shared_libs: [
+                "libbinder_ndk",
+                "android.hardware.common-V2-ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libqspm-mem-utils-vendor",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libqspm-mem-utils-vendor.so",
+            ],
+            shared_libs: [
+                "vendor.qti.qspmhal-V1-ndk",
+                "libcutils",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.qti.qspmhal-impl",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/vendor.qti.qspmhal-impl.so",
             ],
             shared_libs: [
                 "libutils",
-                "vendor.qti.qspmhal@1.0",
-                "android.hidl.allocator@1.0",
-                "android.hidl.memory@1.0",
-                "libhidlbase",
-                "libhidlmemory",
+                "vendor.qti.qspmhal-V1-ndk",
+                "libqspm-mem-utils-vendor",
                 "liblog",
                 "libcutils",
+                "libbinder",
+                "libbase",
+                "libbinder_ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libOpenCL_adreno",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libOpenCL_adreno.so",
+            ],
+            shared_libs: [
+                "libcutils",
+                "libvndksupport",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libadreno_compiler_cl",
+    owner: "sony",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libadreno_compiler_cl.so",
+            ],
+            shared_libs: [
+                "liblog",
                 "libc++",
                 "libc",
                 "libm",
@@ -20489,6 +20568,15 @@ prebuilt_etc_xml {
 }
 
 prebuilt_etc_xml {
+    name: "vendor.qti.qspmhal-service.xml",
+    owner: "sony",
+    src: "proprietary/vendor/etc/vintf/manifest/vendor.qti.qspmhal-service.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
     name: "vendor.qti.diag.hal.service.xml",
     owner: "oneplus",
     src: "proprietary/vendor/etc/vintf/manifest/vendor.qti.diag.hal.service.xml",
@@ -21638,18 +21726,21 @@ cc_prebuilt_binary {
                 "proprietary/vendor/bin/hw/vendor.qti.media.c2@1.0-service",
             ],
             shared_libs: [
+                "server_configurable_flags",
+                "libaconfig_storage_read_api_cc",
+                "libbase",
+                "libcodec2",
+                "libcodec2_hal_common",
+                "libcodec2_aidl",
                 "libutils",
                 "libcutils",
                 "liblog",
                 "libcodec2_vndk",
-                "android.hardware.media.c2@1.0",
+                "android.hardware.media.c2-V1-ndk",
                 "libavservices_minijail",
                 "libbinder",
-                "libhidlbase",
-                "libhidltransport",
-                "libhwbinder",
+                "libbinder_ndk",
                 "libvndksupport",
-                "libcodec2_hidl@1.0",
                 "libc++",
                 "libc",
                 "libm",
@@ -21675,24 +21766,21 @@ cc_prebuilt_binary {
                 "proprietary/vendor/bin/hw/vendor.qti.media.c2audio@1.0-service",
             ],
             shared_libs: [
+                "server_configurable_flags",
+                "libaconfig_storage_read_api_cc",
+                "libbase",
+                "libcodec2",
+                "libcodec2_hal_common",
+                "libcodec2_vndk",
+                "android.hardware.media.c2-V1-ndk",
+                "libbinder_ndk",
+                "libcodec2_aidl",
                 "libutils",
                 "libcutils",
                 "liblog",
-                "libcodec2_vndk",
-                "libqc2audio_base",
-                "libqc2audio_utils",
-                "libqc2audio_basecodec",
-                "libqc2audio_platform",
-                "libqc2audio_core",
-                "libqdMetaData",
-                "android.hardware.media.c2@1.0",
                 "libavservices_minijail",
                 "libbinder",
-                "libhidlbase",
-                "libhidltransport",
-                "libhwbinder",
                 "libvndksupport",
-                "libcodec2_hidl@1.0",
                 "libc++",
                 "libc",
                 "libm",
@@ -22609,18 +22697,16 @@ cc_prebuilt_binary {
                 "proprietary/vendor/bin/shsusrd",
             ],
             shared_libs: [
+                "libutils",
+                "libcutils",
+                "libshsc",
+                "libconfigdb",
                 "libcrypto",
+                "libdsutils",
+                "liblog",
                 "libssl",
-                "libqmiservices",
                 "libqmi_cci",
                 "libqmi_common_so",
-                "libqmi_client_qmux",
-                "libqmi_client_helper",
-                "libdsutils",
-                "libconfigdb",
-                "libcutils",
-                "libnlnetmgr",
-                "liblog",
                 "libc++",
                 "libc",
                 "libm",
@@ -22999,20 +23085,21 @@ cc_prebuilt_binary {
 }
 
 cc_prebuilt_binary {
-    name: "vendor.qti.qspmhal@1.0-service",
-    owner: "oneplus",
+    name: "vendor.qti.qspmhal-service",
+    owner: "sony",
     target: {
         android_arm64: {
             srcs: [
-                "proprietary/vendor/bin/vendor.qti.qspmhal@1.0-service",
+                "proprietary/vendor/bin/vendor.qti.qspmhal-service",
             ],
             shared_libs: [
-                "vendor.qti.qspmhal@1.0",
-                "vendor.qti.qspmhal@1.0-impl",
-                "libhidlbase",
+                "vendor.qti.qspmhal-V1-ndk",
+                "vendor.qti.qspmhal-impl",
                 "liblog",
                 "libutils",
                 "libavservices_minijail",
+                "libbase",
+                "libbinder_ndk",
                 "libc++",
                 "libc",
                 "libm",

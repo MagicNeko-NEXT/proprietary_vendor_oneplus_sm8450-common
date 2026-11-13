@@ -138,7 +138,6 @@
         },
         // list of codec plugin libraries to be loaded into codec registry
         "QC2CodecPlugins": [
-            "libqc2vppfilter.so",
             //#ifdef OPLUS_FEATURE_OSIE_SR
             //shumin.nie@MULTIMEDIA.MMSERVER.PLAYER, 2020/11/10, Add for OSIE and SR
             "liboplusvppfilter.so"

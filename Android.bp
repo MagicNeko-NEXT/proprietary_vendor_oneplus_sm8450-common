@@ -23858,6 +23858,13 @@ cc_prebuilt_library_shared {
 
 // Mesa Turnip (freedreno) Vulkan driver, from the Banners-Turnip
 // v27.0.0-20261020 build (Mesa main 4b0f64c, Vulkan 1.4.363).
+//
+// Lives in turnip/ rather than under gpu-q3/: Turnip is an independent axis
+// from the Q3 GLES/EGL stack. GPU_DRIVER_Q3 swaps the whole Adreno userspace
+// stack (libEGL_adreno, libGLESv2_adreno, ...), while GPU_DRIVER_TURNIP only
+// decides whether this open-source Vulkan ICD ships and whether the runtime
+// switcher is installed. Either can be enabled without the other.
+//
 // Installed as vulkan.freedreno.so next to the OEM vulkan.adreno.so; which
 // one the platform loads is decided by ro.hardware.vulkan, so both can ship
 // in the same image and the switch stays a property change.
@@ -23878,7 +23885,7 @@ cc_prebuilt_library_shared {
         "libsync",
         "libz",
     ],
-    srcs: ["gpu-q3/turnip/vulkan.freedreno.so"],
+    srcs: ["turnip/vulkan.freedreno.so"],
 }
 
 cc_prebuilt_library_shared {
